@@ -7,11 +7,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 public interface Users {
 
-    Iterator<User<?>> all();
-    <T extends Role> Iterator<User<T>> byRole(Class<T> impl);
+    Stream<User<?>> all();
+    <T extends Role> Stream<User<T>> byRole(Class<T> impl);
 
     Optional<User<?>> byId(UUID id);
     Optional<User<?>> byUsername(String username);
@@ -20,13 +21,13 @@ public interface Users {
     static Users ofEmpty() {
         return new Users() {
             @Override
-            public Iterator<User<?>> all() {
-                return Collections.emptyListIterator();
+            public Stream<User<?>> all() {
+                return Stream.empty();
             }
 
             @Override
-            public <T extends Role> Iterator<User<T>> byRole(Class<T> impl) {
-                return Collections.emptyListIterator();
+            public <T extends Role> Stream<User<T>> byRole(Class<T> impl) {
+                return Stream.empty();
             }
 
             @Override
@@ -38,7 +39,6 @@ public interface Users {
             public Optional<User<?>> byUsername(String username) {
                 return Optional.empty();
             }
-
 
         };
     }

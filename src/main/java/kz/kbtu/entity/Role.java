@@ -1,12 +1,16 @@
 package kz.kbtu.entity;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface Role {
 
-    List<String> permissions();
+    Stream<String> permissions();
     boolean can(String permission);
 
-    Class<?> implementation();
+    Class<? extends Role> implementation();
 
+    interface RoleBuilder<T extends Role> {
+        Class<T> implementation();
+        T build(User<T> user);
+    }
 }

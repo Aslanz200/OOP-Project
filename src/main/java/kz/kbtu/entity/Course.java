@@ -10,6 +10,4 @@ public interface Course {
     String name();
 
     Users participants();
-
-
 }
