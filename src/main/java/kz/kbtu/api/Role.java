@@ -1,4 +1,4 @@
-package kz.kbtu.entity;
+package kz.kbtu.api;
 
 import java.util.stream.Stream;
 

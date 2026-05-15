@@ -1,9 +1,10 @@
-package kz.kbtu.impl.entity.role;
+package kz.kbtu.impl.role;
 
-import kz.kbtu.entity.Database;
-import kz.kbtu.entity.Role;
-import kz.kbtu.entity.User;
-import kz.kbtu.entity.role.Student;
+import kz.kbtu.api.Database;
+import kz.kbtu.api.Mark;
+import kz.kbtu.api.Role;
+import kz.kbtu.api.User;
+import kz.kbtu.api.role.Student;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -48,6 +49,11 @@ public class StudentImpl implements Student {
     @Override
     public int credits() {
         return this.credits;
+    }
+
+    @Override
+    public Stream<Mark> marks() {
+        return Stream.empty();
     }
 
     @Override

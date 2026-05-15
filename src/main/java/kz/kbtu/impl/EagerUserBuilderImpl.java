@@ -1,13 +1,12 @@
-package kz.kbtu.impl.entity;
+package kz.kbtu.impl;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import kz.kbtu.entity.Database;
-import kz.kbtu.entity.Role;
-import kz.kbtu.entity.User;
+import kz.kbtu.api.Database;
+import kz.kbtu.api.Role;
+import kz.kbtu.api.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class EagerUserBuilderImpl<T extends Role> implements User.UserBuilder<T> {
     protected final BCrypt.Hasher hashing;

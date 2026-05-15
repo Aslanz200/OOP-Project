@@ -1,15 +1,16 @@
-package kz.kbtu.entity;
+package kz.kbtu.api;
 
-import java.util.Iterator;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Stream;
 
-public interface User<T extends Role> extends AutoCloseable {
+public interface User<T extends Role> {
     UUID id();
     String username();
-    Iterable<String> fullName();
+    Stream<String> fullName();
 
     Optional<T> role();
+    boolean is(Class<? extends Role> role);
 
     boolean checkPassword(String password);
 

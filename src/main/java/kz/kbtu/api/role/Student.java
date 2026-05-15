@@ -1,10 +1,9 @@
-package kz.kbtu.entity.role;
+package kz.kbtu.api.role;
 
-import kz.kbtu.entity.Course;
-import kz.kbtu.entity.Role;
+import kz.kbtu.api.Mark;
+import kz.kbtu.api.Role;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface Student extends Role {
 
@@ -13,6 +12,8 @@ public interface Student extends Role {
 
     int fails();
     int credits();
+
+    Stream<Mark> marks();
 
     interface StudentBuilder extends Role.RoleBuilder<Student> {
         StudentBuilder year(int yr);
