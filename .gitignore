@@ -14,3 +14,9 @@ target/
 
 # OS
 .DS_Store
+
+# Gradle
+.gradle/
+
+# Serialized data
+*.ser

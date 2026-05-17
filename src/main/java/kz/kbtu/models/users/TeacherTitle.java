@@ -1,4 +1,4 @@
-package university;
+package kz.kbtu.models.users;
 
 public enum TeacherTitle {
     TUTOR,
