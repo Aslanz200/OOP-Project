@@ -6,7 +6,6 @@ import kz.kbtu.api.Role;
 import kz.kbtu.api.User;
 import kz.kbtu.api.sets.Users;
 import kz.kbtu.impl.database.sql.api.sets.AllUsers;
-import org.jetbrains.annotations.NotNull;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -64,7 +63,7 @@ public record SQLBasedSchool(DataSource datasource) implements School {
     }
 
     @Override
-    public @NotNull User.UserBuilder<?> userBuilder() {
+    public User.UserBuilder<?> userBuilder() {
         return null;
     }
 

@@ -22,7 +22,6 @@ public abstract class UserOutcome<T extends Role> implements Outcome.Mapping<Use
     @Override
     public User<T> map(ResultSet rset) throws SQLException {
         return database.userBuilder()
-                .
                 .role(mapRole(rset))
                 .build();
     }
