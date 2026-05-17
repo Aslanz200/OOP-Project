@@ -15,6 +15,7 @@ public interface User<T extends Role> {
     boolean checkPassword(String password);
 
     interface UserBuilder<T extends Role> {
+        UserBuilder<T> id(UUID id);
         UserBuilder<T> username(String name);
         UserBuilder<T> password(String password);
         UserBuilder<T> password(String password, boolean hashed);
