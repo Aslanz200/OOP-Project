@@ -6,9 +6,6 @@ import kz.kbtu.patterns.EventManager;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * System admin: can add/remove users and view action logs.
- */
 public class Admin extends Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -4,9 +4,6 @@ import kz.kbtu.models.users.Student;
 
 import java.io.Serializable;
 
-/**
- * A student's mark in a specific course. Composed of two attestations (30% each) and a final exam (40%).
- */
 public class Mark implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -27,7 +24,6 @@ public class Mark implements Serializable {
         this.finalExam = finalExam;
     }
 
-    /** Weighted total: 30% + 30% + 40%. */
     public double getTotal() {
         return attestation1 * 0.3 + attestation2 * 0.3 + finalExam * 0.4;
     }

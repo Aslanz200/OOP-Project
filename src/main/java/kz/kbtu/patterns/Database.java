@@ -12,12 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Singleton in-memory database. Serializable for disk persistence.
- *
- * <p>This is one of the project's design patterns (Singleton). Holds the entire system state
- * so demo runs can be saved/restored.</p>
- */
 public class Database implements Serializable {
     private static final long serialVersionUID = 1L;
     private static Database instance;
@@ -53,14 +47,12 @@ public class Database implements Serializable {
                 .findFirst();
     }
 
-    /** Save current state to a file. */
     public void save(String path) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(this);
         }
     }
 
-    /** Load state from file, replacing the singleton. Returns the loaded instance. */
     public static Database load(String path) throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             Database loaded = (Database) ois.readObject();
@@ -69,7 +61,6 @@ public class Database implements Serializable {
         }
     }
 
-    /** Reset for fresh demo runs. */
     public static synchronized void reset() {
         instance = new Database();
         EventManager.getInstance().clear();

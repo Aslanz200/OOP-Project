@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Bachelor student. Carries year (1..4), GPA, credits, fail count, enrolled courses,
- * and (for 4th years) a research supervisor.
- */
 public class Student extends User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -42,10 +38,6 @@ public class Student extends User implements Serializable {
         this.failCount = 0;
     }
 
-    /**
-     * Enrolls the student in a course, enforcing the 21-credit ceiling and the 3-fail cap.
-     * @throws CreditLimitException if the new total would exceed the limit or fail cap is exceeded
-     */
     public void registerForCourse(Course course) throws CreditLimitException {
         if (failCount >= MAX_FAILS) {
             throw new CreditLimitException(
@@ -88,9 +80,6 @@ public class Student extends User implements Serializable {
                 "Student " + fullName() + " rated teacher " + teacher.fullName() + " : " + rating);
     }
 
-    /**
-     * Assigns research supervisor. Throws if h-index < 3 as per spec.
-     */
     public void setSupervisor(Researcher supervisor) throws LowHIndexException {
         if (supervisor.getHIndex() < MIN_SUPERVISOR_H_INDEX) {
             throw new LowHIndexException(

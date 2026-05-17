@@ -3,10 +3,6 @@ package kz.kbtu.patterns;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Observer-pattern subject. Singleton. Used as a central event bus for user actions —
- * Admin's "view logs" simply reads {@link #getLog()}.
- */
 public class EventManager {
     private static EventManager instance;
     private final List<Observer> observers = new ArrayList<>();

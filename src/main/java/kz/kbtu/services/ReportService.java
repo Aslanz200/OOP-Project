@@ -14,12 +14,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Generates simple academic reports + research statistics required by spec.
- */
 public class ReportService {
 
-    /** Quick stats over all marks (avg/min/max + A/B/C/D/F counts). */
     public String gradeStatistics() {
         List<Mark> marks = Database.getInstance().getMarks();
         if (marks.isEmpty()) return "No marks recorded.";
@@ -48,7 +44,6 @@ public class ReportService {
                 ", fails=" + fails + "/" + marks.size();
     }
 
-    /** Print all papers across the university, sorted by the supplied Comparator. */
     public void printAllPapers(Comparator<ResearchPaper> comparator) {
         System.out.println("=== All papers in the university ===");
         Database.getInstance().getPapers().stream()
@@ -56,14 +51,12 @@ public class ReportService {
                 .forEach(p -> System.out.println("  " + p));
     }
 
-    /** Top cited researcher across all schools. */
     public Optional<Researcher> topCitedResearcher(List<Researcher> researchers) {
         return researchers.stream()
                 .max(Comparator.comparingInt(r -> r.getPapers().stream()
                         .mapToInt(ResearchPaper::getCitations).sum()));
     }
 
-    /** Top cited researcher whose paper of the given year has the most citations. */
     public Optional<Researcher> topCitedOfYear(List<Researcher> researchers, int year) {
         return researchers.stream()
                 .max(Comparator.comparingInt(r -> r.getPapers().stream()

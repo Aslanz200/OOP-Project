@@ -2,9 +2,6 @@ package kz.kbtu.models.users;
 
 import java.io.Serializable;
 
-/**
- * Abstract base for any employee of the university (teachers, managers, admins).
- */
 public abstract class Employee extends User implements Serializable {
     private static final long serialVersionUID = 1L;
 

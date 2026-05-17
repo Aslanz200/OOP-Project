@@ -8,13 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * A research paper. Fields chosen from the IEEE article fields list per spec:
- * title, authors, journal, pages, datePublished, citations, doi.
- *
- * <p>Implements Comparable (by citations, descending) and supplies three named Comparators
- * for the Strategy pattern used in {@link Researcher#printPapers(Comparator)}.</p>
- */
 public class ResearchPaper implements Serializable, Comparable<ResearchPaper> {
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +32,6 @@ public class ResearchPaper implements Serializable, Comparable<ResearchPaper> {
         this.doi = doi;
     }
 
-    /** Natural order: most-cited first. */
     @Override
     public int compareTo(ResearchPaper other) {
         return Integer.compare(other.citations, this.citations);

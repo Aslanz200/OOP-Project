@@ -3,10 +3,6 @@ package kz.kbtu.models.users;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Base abstract class for any user of the university information system.
- * Implements Serializable to allow persisting the whole {@link kz.kbtu.patterns.Database} to disk.
- */
 public abstract class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -27,7 +23,6 @@ public abstract class User implements Serializable {
         this.id = id;
     }
 
-    /** Authenticates the user with a plain-text password (demo-grade). */
     public boolean login(String enteredPassword) {
         if (Objects.equals(this.password, enteredPassword)) {
             this.loggedIn = true;

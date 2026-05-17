@@ -33,20 +33,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Console demo of the KBTU University Information System.
- *
- * <p>Seeds an in-memory database, then offers an authenticated menu per role.
- * Showcases:
- * <ul>
- *     <li><b>Singleton</b> — {@link Database#getInstance()}, {@link EventManager#getInstance()}</li>
- *     <li><b>Factory</b> — {@link UserFactory#createUser}</li>
- *     <li><b>Observer</b> — logs printed live via console subscriber</li>
- *     <li><b>Strategy</b> — {@link Researcher#printPapers(Comparator)} with three comparators</li>
- *     <li><b>Decorator</b> — {@link ResearcherDecorator} wraps an Employee</li>
- * </ul>
- * </p>
- */
 public class Demo {
 
     private static final Scanner SC = new Scanner(System.in);
@@ -78,8 +64,6 @@ public class Demo {
         }
     }
 
-    // ---------- Authentication + role dispatch ----------
-
     private static void loginFlow() {
         System.out.print("username: ");
         String u = SC.nextLine().trim();
@@ -101,8 +85,6 @@ public class Demo {
         else if (user instanceof Manager) managerMenu((Manager) user);
         else if (user instanceof Admin)   adminMenu((Admin) user);
     }
-
-    // ---------- Student menu ----------
 
     private static void studentMenu(Student s) {
         while (true) {
@@ -149,8 +131,6 @@ public class Demo {
         }
     }
 
-    // ---------- Teacher menu ----------
-
     private static void teacherMenu(Teacher t) {
         while (true) {
             System.out.println("\n-- TEACHER MENU [" + t.fullName() + "] --");
@@ -193,8 +173,6 @@ public class Demo {
             }
         }
     }
-
-    // ---------- Manager menu ----------
 
     private static void managerMenu(Manager m) {
         while (true) {
@@ -240,8 +218,6 @@ public class Demo {
             }
         }
     }
-
-    // ---------- Admin menu ----------
 
     private static void adminMenu(Admin a) {
         while (true) {
@@ -303,8 +279,6 @@ public class Demo {
         }
     }
 
-    // ---------- Researcher sub-menu (used by Teacher menu) ----------
-
     private static void researcherForUser(User user) {
         Researcher r = RESEARCHERS.stream()
                 .filter(x -> x instanceof ResearcherDecorator
@@ -330,8 +304,6 @@ public class Demo {
             }
         }
     }
-
-    // ---------- Helpers ----------
 
     private static void listCourses() {
         Database.getInstance().getCourses().forEach(c -> System.out.println("  " + c));
@@ -367,16 +339,12 @@ public class Demo {
         }
     }
 
-    // ---------- Console observer ----------
-
     static class ConsoleLogger implements Observer {
         @Override
         public void update(String message) {
             System.out.println("[event] " + message);
         }
     }
-
-    // ---------- Seed data ----------
 
     private static void seed() {
         Database db = Database.getInstance();
@@ -408,7 +376,7 @@ public class Demo {
         prof.manageCourse(oop);
         prof.manageCourse(alg);
         tutor.manageCourse(db2);
-        // more than 1 instructor per course (spec):
+
         tutor.manageCourse(oop);
 
         try {
@@ -421,10 +389,9 @@ public class Demo {
         db.getMarks().add(new Mark(s3, db2, 70, 72, 68));
         db.getMarks().add(new Mark(s3, alg, 82, 78, 85));
 
-        // ---------- Researchers via Decorator pattern ----------
-        ResearcherDecorator profResearcher = new ResearcherDecorator(prof, 7);   // Professor — always Researcher
-        ResearcherDecorator tutorResearcher = new ResearcherDecorator(tutor, 2); // non-professor teacher can also be Researcher
-        ResearcherDecorator adminResearcher = new ResearcherDecorator(admin, 4); // employee who is neither Teacher nor Student
+        ResearcherDecorator profResearcher = new ResearcherDecorator(prof, 7);   
+        ResearcherDecorator tutorResearcher = new ResearcherDecorator(tutor, 2); 
+        ResearcherDecorator adminResearcher = new ResearcherDecorator(admin, 4); 
         RESEARCHERS.add(profResearcher);
         RESEARCHERS.add(tutorResearcher);
         RESEARCHERS.add(adminResearcher);
@@ -458,17 +425,15 @@ public class Demo {
         project.addPaper(p3);
         db.getProjects().add(project);
 
-        // 4th year student demo: trying h<3 throws; with h>=3 succeeds
         try {
-            s3.setSupervisor(tutorResearcher); // h=2 → throws
+            s3.setSupervisor(tutorResearcher); 
         } catch (LowHIndexException e) {
             System.out.println("[seed] expected exception caught: " + e.getMessage());
         }
         try {
-            s3.setSupervisor(profResearcher); // h=7 → ok
+            s3.setSupervisor(profResearcher); 
         } catch (LowHIndexException e) { System.out.println(e.getMessage()); }
 
-        // Manager seeds a news headline
         dean.manageNews("Welcome to the new academic year!");
     }
 

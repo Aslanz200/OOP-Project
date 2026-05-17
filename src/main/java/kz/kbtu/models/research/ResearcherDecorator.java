@@ -7,13 +7,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Decorator pattern. Wraps any {@link Employee} and lets them act as a {@link Researcher}.
- *
- * <p>This is how the spec's "Researcher mystery" is resolved: an employee who is neither
- * a teacher nor a student but is still a researcher can be modeled by wrapping a plain
- * Employee with this decorator.</p>
- */
 public class ResearcherDecorator implements Researcher, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -50,7 +43,7 @@ public class ResearcherDecorator implements Researcher, Serializable {
             project.addParticipant(this);
             projects.add(project);
         } catch (Exception e) {
-            // Researcher always passes the check; rethrow as unchecked just in case
+
             throw new IllegalStateException(e);
         }
     }

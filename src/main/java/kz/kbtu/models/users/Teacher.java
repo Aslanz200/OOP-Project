@@ -9,9 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Teacher employee. Holds a title (tutor/lector/senior_lector/professor) and a list of courses they instruct.
- */
 public class Teacher extends Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +23,6 @@ public class Teacher extends Employee implements Serializable {
         this.title = title;
     }
 
-    /** Assigns a numerical mark to a student for a given course (final exam score by default). */
     public void putMark(Student student, Course course, double value) {
         Mark mark = Database.getInstance().findMark(student, course)
                 .orElseGet(() -> {
@@ -40,7 +36,6 @@ public class Teacher extends Employee implements Serializable {
                         " in " + course.getCourseId());
     }
 
-    /** Returns students enrolled in the given course. */
     public List<Student> viewStudents(Course course) {
         return new ArrayList<>(course.getStudents());
     }

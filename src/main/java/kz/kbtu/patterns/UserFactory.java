@@ -8,27 +8,10 @@ import kz.kbtu.models.users.Teacher;
 import kz.kbtu.models.users.TeacherTitle;
 import kz.kbtu.models.users.User;
 
-/**
- * Factory pattern. Constructs a concrete {@link User} subclass based on the given type string.
- * Centralises object creation so demo code can stay role-agnostic.
- */
 public final class UserFactory {
 
     private UserFactory() {}
 
-    /**
-     * Creates a user.
-     *
-     * @param type one of "student", "teacher", "manager", "admin" (case-insensitive)
-     * @param args positional arguments after the standard
-     *             {@code username, password, firstName, lastName, id}:
-     *             <ul>
-     *                 <li>student → {@code int year, double gpa}</li>
-     *                 <li>teacher → {@code String employeeId, String dept, TeacherTitle title}</li>
-     *                 <li>manager → {@code String employeeId, String dept, ManagerType type}</li>
-     *                 <li>admin → {@code String employeeId, String dept}</li>
-     *             </ul>
-     */
     public static User createUser(String type,
                                   String username, String password,
                                   String firstName, String lastName, String id,

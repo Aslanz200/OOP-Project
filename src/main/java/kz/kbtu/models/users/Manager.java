@@ -5,9 +5,6 @@ import kz.kbtu.patterns.EventManager;
 
 import java.io.Serializable;
 
-/**
- * Manager employee — approves registrations, assigns teachers, manages news.
- */
 public class Manager extends Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +30,7 @@ public class Manager extends Employee implements Serializable {
     }
 
     public void viewReports() {
-        // Delegates to ReportService at call sites; here we just log the action
+
         EventManager.getInstance().notify("Manager " + fullName() + " viewed reports");
     }
 

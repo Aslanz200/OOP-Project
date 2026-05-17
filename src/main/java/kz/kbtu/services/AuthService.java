@@ -5,10 +5,6 @@ import kz.kbtu.models.users.User;
 import kz.kbtu.patterns.Database;
 import kz.kbtu.patterns.EventManager;
 
-/**
- * Authentication service. Any user must call {@link #login(String, String)} before
- * the menu in {@link kz.kbtu.Demo} becomes available.
- */
 public class AuthService {
 
     public User login(String username, String password) throws AuthException {

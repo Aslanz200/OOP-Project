@@ -6,10 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A research project. Topic, list of researcher participants, and produced papers.
- * Refuses participants that aren't Researchers via {@link NotResearcherException}.
- */
 public class ResearchProject implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,11 +19,6 @@ public class ResearchProject implements Serializable {
         this.topic = topic;
     }
 
-    /**
-     * Adds a participant. The {@code candidate} argument is intentionally typed as Object so the
-     * runtime check can fire — this models the ТЗ rule "if someone who is not a Researcher tries
-     * to join, throw a custom exception".
-     */
     public void addParticipant(Object candidate) throws NotResearcherException {
         if (!(candidate instanceof Researcher)) {
             throw new NotResearcherException(
