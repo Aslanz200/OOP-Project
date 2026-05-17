@@ -1,28 +1,28 @@
 package kz.kbtu.impl;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import kz.kbtu.api.Database;
+import kz.kbtu.api.School;
 import kz.kbtu.api.Role;
 import kz.kbtu.api.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class EagerUserBuilderImpl<T extends Role> implements User.UserBuilder<T> {
+public abstract class UserBuilderImpl<T extends Role> implements User.UserBuilder<T> {
     protected final BCrypt.Hasher hashing;
-    protected final Database database;
+    protected final School school;
 
     protected String plainPassword;
     protected List<String> fullName = List.of();
     protected Role.RoleBuilder<T> role;
     protected String name;
 
-    public EagerUserBuilderImpl(BCrypt.Hasher hashing, Database database) {
+    public UserBuilderImpl(BCrypt.Hasher hashing, School school) {
         this.hashing = hashing;
-        this.database = database;
+        this.school = school;
     }
-    public EagerUserBuilderImpl(BCrypt.Hasher hashing, Database database, Role.RoleBuilder<T> role) {
-        this(hashing, database);
+    public UserBuilderImpl(BCrypt.Hasher hashing, School school, Role.RoleBuilder<T> role) {
+        this(hashing, school);
         this.role = role;
     }
 

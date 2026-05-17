@@ -17,6 +17,7 @@ public interface User<T extends Role> {
     interface UserBuilder<T extends Role> {
         UserBuilder<T> username(String name);
         UserBuilder<T> password(String password);
+        UserBuilder<T> password(String password, boolean hashed);
         <R extends Role> UserBuilder<R> role(Role.RoleBuilder<R> builder);
 
         UserBuilder<T> fullName(String... names);

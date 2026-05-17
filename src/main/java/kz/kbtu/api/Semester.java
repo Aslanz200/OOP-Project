@@ -1,11 +1,9 @@
 package kz.kbtu.api;
 
-import java.util.stream.Stream;
+import java.util.Date;
 
 public interface Semester {
-
     int year();
-    String part();
-    Stream<Mark> marks();
-
+    String name();
+    Date date();
 }

@@ -1,21 +1,21 @@
-package kz.kbtu.impl.database.sql.entity.role;
+package kz.kbtu.impl.database.sql.api.role;
 
-import kz.kbtu.api.Role;
-import kz.kbtu.api.User;
 import kz.kbtu.api.role.Student;
 import kz.kbtu.impl.EagerUserImpl;
-import kz.kbtu.impl.database.sql.SQLDatabase;
+import kz.kbtu.impl.database.sql.SQLBasedSchool;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 public class StudentUserImpl extends EagerUserImpl<Student> {
+
+    private final SQLBasedSchool database;
+
     public StudentUserImpl(
-            SQLDatabase database,
-            UUID id, String username, List<String> fullName, String hashedPassword) {
+            UUID id, String username, List<String> fullName, String hashedPassword, SQLBasedSchool database) {
         super(id, username, fullName, hashedPassword);
+        this.database = database;
     }
 
     @Override

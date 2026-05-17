@@ -8,4 +8,7 @@ public interface Course {
     UUID id();
     String codeName();
     String name();
+
+    int credits();
+    int hours();
 }

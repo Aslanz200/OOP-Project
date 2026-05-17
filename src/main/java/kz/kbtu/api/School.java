@@ -4,7 +4,7 @@ import kz.kbtu.api.sets.Users;
 
 import java.util.Optional;
 
-public interface Database {
+public interface School {
 
 
     Users<?> users();
@@ -22,4 +22,5 @@ public interface Database {
     );
 
     <R extends Role> User<R> updateRole(User<?> user, Role.RoleBuilder<R> builder);
+
 }

@@ -1,5 +1,7 @@
 package kz.kbtu.api.role;
 
+import kz.kbtu.api.Course;
+import kz.kbtu.api.Lesson;
 import kz.kbtu.api.Mark;
 import kz.kbtu.api.Role;
 
@@ -14,11 +16,14 @@ public interface Student extends Role {
     int credits();
 
     Stream<Mark> marks();
+    Stream<Course> courses();
+
+    void dropCourse(Course course);
+    void enrollCourse(Course course);
+
+    Stream<Lesson> lessons();
 
     interface StudentBuilder extends Role.RoleBuilder<Student> {
         StudentBuilder year(int yr);
-        StudentBuilder gpa(float gpa);
-        StudentBuilder fails(int fails);
-        StudentBuilder credits(int credits);
     }
 }
